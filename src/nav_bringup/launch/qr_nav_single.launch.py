@@ -77,32 +77,12 @@ def generate_launch_description():
                               'use_lifecycle_mgr': 'false',
                               'map_subscribe_transient_local': 'true'}.items()),
     ])
-
-    declared_args.append(DeclareLaunchArgument(
-        name='scan', 
-        default_value='scan',
-        description='Namespace for sample topics'))
-
-    config_file = ''
-
-    ros1_bridge = Node(
-        package="ros1_bridge",
-        executable="dynamic_bridge",
-    )
     
     rviz_config=get_package_share_directory('rslidar_sdk')+'/rviz/rviz_qr.rviz'
 
     rviz_node = Node(package='rviz2', executable='rviz2', arguments=['-d',rviz_config])
-    
-    # tf_node = Node(
-    #     package='tf2_ros',
-    #     node_executable='static_transform_publisher',
-    #     node_name='static_transform_publisher',
-    #     arguments=['0', '0', '0', '0', '0', '0', '1', 'map', 'base_scan']
-    # )
 
     return LaunchDescription(declared_args + [
-        ros1_bridge,
         bringup_cmd_group,
         # tf_node,
         rviz_node
