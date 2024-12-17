@@ -16,7 +16,7 @@ def generate_launch_description():
     # 地图的分辨率
     resolution = LaunchConfiguration('resolution', default='0.05')
     # 地图的发布周期
-    publish_period_sec = LaunchConfiguration('publish_period_sec', default='1.0')
+    publish_period_sec = LaunchConfiguration('publish_period_sec', default='0.3')
     # 配置文件夹路径
     configuration_directory = LaunchConfiguration('configuration_directory',default= os.path.join(pkg_share, 'config') )
     # 配置文件

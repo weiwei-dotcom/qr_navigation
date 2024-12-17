@@ -1,3 +1,7 @@
 {
-    "cmake.sourceDirectory": "/home/wl/Documents/qr_navigation/src/nav_bringup"
+    "cmake.sourceDirectory": "/home/wl/Documents/qr_navigation/src/nav_bringup",
+    "files.associations": {
+        "chrono": "cpp",
+        "ranges": "cpp"
+    }
 }

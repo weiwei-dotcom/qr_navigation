@@ -20,7 +20,7 @@ if [ "$1" == 'yd' ]; then
     fi
 elif [ "$1" == "rs" ]; then
     if [ "$2" == "cart" ]; then
-        ros2 launch nav_bringup cartographer_slam.launch.py
+        ros2 launch nav_bringup cartographer_rs.launch.py
     elif [ "$2" == "amcl" ]; then
         ros2 launch nav_bringup qr_nav_rs.launch.py
     elif [ "$2" == 'pub' ]; then
