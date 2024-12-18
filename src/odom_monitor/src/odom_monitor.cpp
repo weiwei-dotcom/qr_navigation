@@ -54,24 +54,25 @@ private:
                 transformStamped.transform.rotation.z, 
                 transformStamped.transform.rotation.w
                 );
+
             double angular_z_now = quat_tf.getAngle();
             double temp_x = (transformStamped.transform.translation.x - last_x_) / (dt_ms_ * 0.001);
             double temp_y = (transformStamped.transform.translation.y - last_y_) / (dt_ms_ * 0.001);
 
-            // 滤波系数相加等于1， 旧数据的系数越靠近1，滤波效果越强，曲线越平滑，但相位越滞后
-            filter_vel_x = 0.5 * temp_x + 0.5 * filter_vel_x;
-            filter_vel_y = 0.5 * temp_y + 0.5 * filter_vel_y;
+            // 滤波系数相加等于1，旧数据的系数越靠近1，滤波效果越强，曲线越平滑，但相位越滞后
+            filter_vel_x = 0.2 * temp_x + 0.8 * filter_vel_x;
+            filter_vel_y = 0.2 * temp_y + 0.8 * filter_vel_y;
             
             odom_msg_now.twist.twist.linear.z = 0;
             odom_msg_now.twist.twist.angular.x = 0;
             odom_msg_now.twist.twist.angular.y = 0;
             double temp_wz = (angular_z_now - last_yaw_) / (dt_ms_ * 0.001);
 
-            filter_angular_z = 0.5 * temp_wz + 0.5 *filter_angular_z;
+            filter_angular_z = 0.5 * temp_wz + 0.5 * filter_angular_z;
 
             odom_msg_now.twist.twist.angular.z = filter_angular_z;
-            odom_msg_now.twist.twist.angular.x = filter_vel_x;
-            odom_msg_now.twist.twist.angular.y = filter_vel_y;
+            odom_msg_now.twist.twist.linear.x = filter_vel_x;
+            odom_msg_now.twist.twist.linear.y = filter_vel_y;
 
             last_yaw_ = angular_z_now;
             last_x_ = transformStamped.transform.translation.x;

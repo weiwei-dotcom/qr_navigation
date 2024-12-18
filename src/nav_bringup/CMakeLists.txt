@@ -33,7 +33,7 @@ if(BUILD_TESTING)
 endif()
 
 install(DIRECTORY
-launch config
+launch config behavior_trees maps params rviz
 DESTINATION share/${PROJECT_NAME})
 
 ament_package()

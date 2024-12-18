@@ -25,6 +25,8 @@ elif [ "$1" == "rs" ]; then
         ros2 launch nav_bringup qr_nav_rs.launch.py
     elif [ "$2" == 'pub' ]; then
         ros2 launch nav_bringup rs_viewer.launch.py
+    elif [ "$2" == 'gen_odom' ]; then
+        ros2 launch nav_bringup rs_cart_gen_odom.launch.py
     fi
 elif [ "$1" == "ros" ]; then
     ros2 launch nav_bringup ros_nav.launch.py
