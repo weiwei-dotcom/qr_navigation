@@ -16,7 +16,7 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument(
             'slam',
-            default_value='True',
+            default_value='False',
             description='Whether run a SLAM'),
 
         IncludeLaunchDescription(

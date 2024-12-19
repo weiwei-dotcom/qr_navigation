@@ -33,7 +33,7 @@ if(BUILD_TESTING)
 endif()
 
 install(DIRECTORY
-launch config behavior_trees maps params rviz
+launch config behavior_trees maps params rviz worlds models urdf
 DESTINATION share/${PROJECT_NAME})
 
 ament_package()

@@ -25,7 +25,7 @@ from nav2_common.launch import RewrittenYaml
 
 def generate_launch_description():
     # Get the launch directory
-    bringup_dir = get_package_share_directory('nav2_bringup')
+    bringup_dir = get_package_share_directory('nav_bringup')
 
     namespace = LaunchConfiguration('namespace')
     use_sim_time = LaunchConfiguration('use_sim_time')
@@ -86,7 +86,7 @@ def generate_launch_description():
         DeclareLaunchArgument(
             'default_bt_xml_filename',
             default_value=os.path.join(
-                get_package_share_directory('nav2_bt_navigator'),
+                get_package_share_directory('nav_bringup'),
                 'behavior_trees', 'navigate_w_replanning_and_recovery.xml'),
             description='Full path to the behavior tree xml file to use'),
 

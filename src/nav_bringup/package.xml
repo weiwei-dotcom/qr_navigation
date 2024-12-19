@@ -14,5 +14,7 @@
 
   <export>
     <build_type>ament_cmake</build_type>
+    <!-- 这里待会测试一下看一下是不是加了就可以找到对应模型了 -->
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
   </export>
 </package>
