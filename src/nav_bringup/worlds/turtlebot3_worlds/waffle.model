@@ -46,6 +46,11 @@
     <model name="turtlebot3_world">
       <static>1</static>
       <include>
+        <!-- 因为package.xml文件中指定了 -->
+        <!-- <gazebo_ros gazebo_model_path="${prefix}/models"/> -->
+        <!-- 所以会从 package.xml 所在功能包根目录下的models文件夹中 -->
+        <!-- 找到 turtlebot3_world 目录从中读取模型文件 -->
+        <!-- 读取到的模型文件为 config 文件中指定的较高版本sdf文件 -->
         <uri>model://turtlebot3_world</uri>
       </include>
     </model>
