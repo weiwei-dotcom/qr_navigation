@@ -25,9 +25,9 @@ from nav2_common.launch import RewrittenYaml
 
 def generate_launch_description():
 
-    param_pkg_dir = get_package_share_directory('cart_localization')
+    param_pkg_dir = get_package_share_directory('cartographer')
     param_file_name = 'burger.yaml'
-    bt_config_pkg_dir = get_package_share_directory('cart_localization')
+    bt_config_pkg_dir = get_package_share_directory('cartographer')
     bt_config_file_name = 'navigate_w_replanning_and_recovery.xml'
 
     namespace = LaunchConfiguration('namespace')

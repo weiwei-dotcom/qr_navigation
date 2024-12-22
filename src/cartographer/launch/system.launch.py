@@ -11,15 +11,17 @@ from launch_ros.actions import Node
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
-    param_pkg_dir = get_package_share_directory('cart_localization')
+    rs_scan_pkg_dir = get_package_share_directory('laser_pub_pkg')
+    rs_scan_file_name = 'rs_scan_pub.launch.py'
+    param_pkg_dir = get_package_share_directory('cartographer')
     param_file_name = 'burger.yaml'
-    rviz_pkg_dir = get_package_share_directory('cart_localization')
-    rviz_file_name = 'nav2_default_view.rviz'
-    bringup_launch_pkg_dir = get_package_share_directory('cart_localization')
+    rviz_pkg_dir = get_package_share_directory('cartographer')
+    rviz_file_name = 'cart_nav.rviz'
+    bringup_launch_pkg_dir = get_package_share_directory('cartographer')
     bringup_launch_file_name = 'bringup_launch_cartographer.launch.py'
-    state_publisher_launch_pkg_dir = get_package_share_directory('cart_localization')
+    state_publisher_launch_pkg_dir = get_package_share_directory('cartographer')
     state_publisher_launch_file_name = 'robot_state_publisher.launch.py'
-    urdf_pkg_dir = get_package_share_directory('cart_localization')
+    urdf_pkg_dir = get_package_share_directory('cartographer')
     urdf_file_name = 'mybot.urdf'
     
     urdf = LaunchConfiguration(
@@ -44,6 +46,14 @@ def generate_launch_description():
         rviz_file_name)
  
     return LaunchDescription([
+
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(os.path.join(
+                rs_scan_pkg_dir,
+                "launch",
+                rs_scan_file_name
+            ))
+        ),
 
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(

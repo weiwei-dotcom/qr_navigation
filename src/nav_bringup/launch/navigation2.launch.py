@@ -35,7 +35,7 @@ def generate_launch_description():
         default=os.path.join(
             get_package_share_directory('nav_bringup'),
             'maps',
-            'map_1734501061.yaml')
+            'turtlebot3_world.yaml')
     )
     param_dir = LaunchConfiguration(
         'params',

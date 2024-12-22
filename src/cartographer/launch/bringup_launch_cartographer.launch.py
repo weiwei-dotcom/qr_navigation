@@ -15,12 +15,12 @@ from nav2_common.launch import RewrittenYaml
  
 def generate_launch_description():
     # Get the launch directory
-    param_pkg_dir = get_package_share_directory('cart_localization')
+    param_pkg_dir = get_package_share_directory('cartographer')
     param_file_name = 'burger.yaml'
-    navigation_launch_pkg_dir = get_package_share_directory('cart_localization')
-    navigation_launch_file_name = 'navigation.launch.py'
-    cartographer_launch_pkg_dir = get_package_share_directory('cart_localization')
-    cartographer_launch_file_name = 'cartographer_rs_localization.launch.py'
+    navigation_launch_pkg_dir = get_package_share_directory('cartographer')
+    navigation_launch_file_name = 'navigation_cartographer.launch.py'
+    cartographer_launch_pkg_dir = get_package_share_directory('cartographer')
+    cartographer_launch_file_name = 'localization_cartographer.launch.py'
     # Create the launch configuration variables
     namespace = LaunchConfiguration('namespace')
     use_namespace = LaunchConfiguration('use_namespace')

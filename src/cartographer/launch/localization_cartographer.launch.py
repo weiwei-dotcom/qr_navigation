@@ -8,7 +8,7 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
     # 定位到功能包的地址
-    lua_config_pkg_dir = get_package_share_directory('cart_localization')
+    lua_config_pkg_dir = get_package_share_directory('cartographer')
     
     #=====================运行节点需要的配置=======================================================================
     # 是否使用仿真时间，我们用gazebo，这里设置成true
@@ -20,9 +20,9 @@ def generate_launch_description():
     # 配置文件夹路径
     configuration_directory = LaunchConfiguration('configuration_directory',default= os.path.join(lua_config_pkg_dir, 'config') )
     # 配置文件
-    configuration_basename = LaunchConfiguration('configuration_basename', default='pure_localization_laser.lua')
+    configuration_basename = LaunchConfiguration('configuration_basename', default='localization.lua')
 
-    map_pkg_dir = get_package_share_directory('cart_localization')
+    map_pkg_dir = get_package_share_directory('cartographer')
     map_file_name = 'map.pbstream'
     pbstream_path = os.path.join(map_pkg_dir, 'map', map_file_name)
     
@@ -43,11 +43,21 @@ def generate_launch_description():
         name='occupancy_grid_node',
         output='screen',
         parameters=[{'use_sim_time': use_sim_time}],
-        arguments=['-resolution', resolution, '-publish_period_sec', publish_period_sec])
+        arguments=[
+            '-resolution', resolution, 
+            '-publish_period_sec', publish_period_sec
+            ]
+        )
+    
+    odom_generator_node = Node(
+        package='odom_monitor',
+        executable='odom_monitor'
+    )
 
     #===============================================定义启动文件========================================================
     ld = LaunchDescription()
     ld.add_action(cartographer_node)
     ld.add_action(occupancy_grid_node)
+    ld.add_action(odom_generator_node)
 
     return ld

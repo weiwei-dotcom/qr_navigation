@@ -28,7 +28,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
-    urdf_pkg_dir = get_package_share_directory('cart_localization')
+    urdf_pkg_dir = get_package_share_directory('cartographer')
     urdf_file_name = 'mybot.urdf'
     urdf = LaunchConfiguration(
         'urdf', 
