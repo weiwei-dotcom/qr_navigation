@@ -22,7 +22,7 @@ elif [ "$1" == "rs" ]; then
     if [ "$2" == "cart" ]; then
         ros2 launch nav_bringup cartographer_rs.launch.py
     elif [ "$2" == "amcl" ]; then
-        ros2 launch nav_bringup qr_nav_rs.launch.py
+        echo "Navigation method of AMCL is developing !!! Please look forward to our !!!"
     elif [ "$2" == 'pub' ]; then
         ros2 launch nav_bringup rs_viewer.launch.py
     elif [ "$2" == 'gen_odom' ]; then

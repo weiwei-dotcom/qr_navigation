@@ -11,11 +11,23 @@ import os
 
 def generate_launch_description():
 
-    config_file = ''
+    rs_config_pkg_dir = get_package_share_directory('laser_pub_pkg')
+    rs_config_file_name = 'rs_config.yaml'
+    rs_config_file = LaunchConfiguration(
+        'rs_config_file',
+        default=os.path.join(
+            rs_config_pkg_dir,
+            'config',
+            rs_config_file_name
+        )
+    )
 
-    lidar_node = Node(package='rslidar_sdk', 
-                      executable='rslidar_sdk_node', 
-                      output='screen', parameters=[{'config_path': config_file}])
+    lidar_node = Node(
+        package='rslidar_sdk', 
+        executable='rslidar_sdk_node', 
+        output='screen', 
+        parameters=[{'config_path': rs_config_file}]
+    )
 
     pcl2scan_node = Node(
         package='pointcloud_to_laserscan', node_executable='pointcloud_to_laserscan_node',
@@ -40,4 +52,4 @@ def generate_launch_description():
     return LaunchDescription([
         lidar_node,
         pcl2scan_node
-    ]) 
+    ])

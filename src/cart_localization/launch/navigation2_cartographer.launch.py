@@ -17,6 +17,19 @@ def generate_launch_description():
     rviz_file_name = 'nav2_default_view.rviz'
     bringup_launch_pkg_dir = get_package_share_directory('cart_localization')
     bringup_launch_file_name = 'bringup_launch_cartographer.launch.py'
+    state_publisher_launch_pkg_dir = get_package_share_directory('cart_localization')
+    state_publisher_launch_file_name = 'robot_state_publisher.launch.py'
+    urdf_pkg_dir = get_package_share_directory('cart_localization')
+    urdf_file_name = 'mybot.urdf'
+    
+    urdf = LaunchConfiguration(
+        'urdf', 
+        default=os.path.join(
+            urdf_pkg_dir,
+            'urdf',
+            urdf_file_name
+        )
+    )
 
     param_dir = LaunchConfiguration(
         'params_file',
@@ -31,15 +44,19 @@ def generate_launch_description():
         rviz_file_name)
  
     return LaunchDescription([
-        DeclareLaunchArgument(
-            'params_file',
-            default_value=param_dir,
-            description='Full path to param file to load'),
- 
-        DeclareLaunchArgument(
-            'use_sim_time',
-            default_value='false',
-            description='Use simulation (Gazebo) clock if true'),
+
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+            os.path.join(
+                state_publisher_launch_pkg_dir,
+                'launch',
+                state_publisher_launch_file_name
+                )
+            ),
+            launch_arguments={
+                'use_sim_time': use_sim_time,
+                'urdf': urdf}.items(),
+        ),
  
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
@@ -57,7 +74,6 @@ def generate_launch_description():
         Node(
             package='rviz2',
             executable='rviz2',
-            name='rviz2',
             arguments=['-d', rviz_config_dir],
             parameters=[{'use_sim_time': use_sim_time}],
             output='screen'),

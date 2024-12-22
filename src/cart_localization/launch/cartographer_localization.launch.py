@@ -23,7 +23,7 @@ def generate_launch_description():
     configuration_basename = LaunchConfiguration('configuration_basename', default='pure_localization_laser.lua')
 
     map_pkg_dir = get_package_share_directory('cart_localization')
-    map_file_name = 'turtlebot_map.pbstream'
+    map_file_name = 'map.pbstream'
     pbstream_path = os.path.join(map_pkg_dir, 'map', map_file_name)
     
     #=====================声明三个节点，cartographer/occupancy_grid_node/rviz_node=================================

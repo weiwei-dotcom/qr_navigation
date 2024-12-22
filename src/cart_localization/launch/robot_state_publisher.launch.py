@@ -28,22 +28,18 @@ from launch_ros.actions import Node
 def generate_launch_description():
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
+    urdf_pkg_dir = get_package_share_directory('cart_localization')
     urdf_file_name = 'mybot.urdf'
-    # urdf_file_name = 'turtlebot3_waffle.urdf'
-
-    print('urdf_file_name : {}'.format(urdf_file_name))
-
-    urdf = os.path.join(
-        get_package_share_directory('cart_localization'),
-        'urdf',
-        urdf_file_name)
+    urdf = LaunchConfiguration(
+        'urdf', 
+        default=os.path.join(
+            urdf_pkg_dir,
+            'urdf',
+            urdf_file_name
+        )
+    )
 
     return LaunchDescription([
-        DeclareLaunchArgument(
-            'use_sim_time',
-            default_value='false',
-            description='Use simulation (Gazebo) clock if true'),
-
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',

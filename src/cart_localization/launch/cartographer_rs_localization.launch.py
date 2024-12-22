@@ -11,7 +11,8 @@ import os
 
 def generate_launch_description():
 
-    rs_scan_pkg_dir = get_package_share_directory('cart_localization')
+    # rs_scan_pkg_dir = get_package_share_directory('cart_localization')
+    rs_scan_pkg_dir = get_package_share_directory('laser_pub_pkg')
     rs_scan_file_name = 'rs_scan_pub.launch.py'
     cart_localization_pkg_dir = get_package_share_directory('cart_localization')
     cart_localization_file_name = 'cartographer_localization.launch.py'

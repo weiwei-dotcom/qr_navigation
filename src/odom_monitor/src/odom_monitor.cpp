@@ -33,7 +33,7 @@ private:
         {
             // 查询 odom -> base_scan 的变换
             geometry_msgs::msg::TransformStamped transformStamped = tf_buffer_.lookupTransform(
-                "odom", "base_scan", tf2::TimePointZero);
+                 "odom", "base_footprint", tf2::TimePointZero);
             
             nav_msgs::msg::Odometry odom_msg_now;
             odom_msg_now.header = transformStamped.header;         
