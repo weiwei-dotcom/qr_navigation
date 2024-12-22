@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>cart_localization</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="728841808@qq.com">wl</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+    <!-- 指定gazebo模型的路径${prefix}为功能包目录 -->
+    <!-- 这样在waffle.model文件路径中通过 -->
+    <!-- <uri>model://turtlebot3_world</uri> -->
+    <!-- 即可找到功能包下的models文件夹中的turtle3_world目录 -->
+    <!-- 进一步调用该路径下的sdf模型文件 -->
+    <gazebo_ros gazebo_model_path="${prefix}/model"/>
+  </export>
+</package>

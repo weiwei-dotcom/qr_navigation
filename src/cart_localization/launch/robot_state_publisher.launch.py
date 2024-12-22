@@ -34,7 +34,7 @@ def generate_launch_description():
     print('urdf_file_name : {}'.format(urdf_file_name))
 
     urdf = os.path.join(
-        get_package_share_directory('nav_bringup'),
+        get_package_share_directory('cart_localization'),
         'urdf',
         urdf_file_name)
 
