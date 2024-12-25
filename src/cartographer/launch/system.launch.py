@@ -57,10 +57,10 @@ def generate_launch_description():
 
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
-            os.path.join(
-                state_publisher_launch_pkg_dir,
-                'launch',
-                state_publisher_launch_file_name
+                os.path.join(
+                    state_publisher_launch_pkg_dir,
+                    'launch',
+                    state_publisher_launch_file_name
                 )
             ),
             launch_arguments={
@@ -70,10 +70,10 @@ def generate_launch_description():
  
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
-            os.path.join(
-                bringup_launch_pkg_dir,
-                'launch',
-                bringup_launch_file_name
+                os.path.join(
+                    bringup_launch_pkg_dir,
+                    'launch',
+                    bringup_launch_file_name
                 )
             ),
             launch_arguments={
