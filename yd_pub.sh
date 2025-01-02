@@ -4,5 +4,5 @@ sleep 3
 gnome-terminal -- bash -c "echo 'start ros1_bridge!'; source /opt/ros/foxy/setup.bash; source /opt/ros/noetic/setup.bash; ros2 run ros1_bridge dynamic_bridge; exec bash"
 sleep 2
 source /opt/ros/foxy/setup.bash
-source /install/setup.bash
+source ./install/setup.bash
 ros2 launch laser_pub_pkg yd_viewer.launch.py
